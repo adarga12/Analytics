@@ -1,5 +1,6 @@
 package com.adarga.data;
 
+import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
 
 import java.util.ArrayList;
@@ -25,6 +26,6 @@ public class DataStore {
     }
 
     private void initializeMetrics() {
-        metrics.add(new Metric());
+        metrics.add(new Metric(new Goal(20)));
     }
 }
