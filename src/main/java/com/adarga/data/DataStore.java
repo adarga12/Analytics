@@ -26,6 +26,6 @@ public class DataStore {
     }
 
     private void initializeMetrics() {
-        metrics.add(new Metric(new Goal(20)));
+        metrics.add(new Metric(new Goal(20), 5));
     }
 }

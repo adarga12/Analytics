@@ -7,11 +7,20 @@ public class Metric {
 
     private Goal goal;
 
-    public Metric (Goal goal) {
+    public Metric (Goal goal, int progress) {
         this.goal = goal;
+        this.progress = progress;
     }
 
     private int progress;
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
 
 
 }

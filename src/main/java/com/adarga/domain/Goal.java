@@ -19,4 +19,18 @@ public class Goal {
         this.title = title;
         this.description = description;
     }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+
 }
