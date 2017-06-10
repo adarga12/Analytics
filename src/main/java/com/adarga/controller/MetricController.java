@@ -17,6 +17,7 @@ import java.util.ArrayList;
 @RequestMapping("/Metrics")
 public class MetricController {
 
+    private ArrayList<Metric> metricsStub = new ArrayList<Metric>();
     @RequestMapping("/")
     public String index() {
         return "<html><title>Hello World</title><body><P><B>Hey there you!</B></P></body></html>";
@@ -29,9 +30,13 @@ public class MetricController {
 
     @RequestMapping(method= RequestMethod.GET)
     public ArrayList<Metric> getMetrics() {
-        ArrayList<Metric> metrics = new ArrayList<Metric>();
-        metrics.add(new Metric(new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise"), 7));
-        return metrics;
+        metricsStub.add(new Metric(new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise"), 7));
+        return metricsStub;
+    }
+
+    @RequestMapping(method= RequestMethod.PUT)
+    public void putMetric(Metric m) {
+        metricsStub.add(m);
     }
     //GET
     //PUT

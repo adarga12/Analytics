@@ -12,6 +12,14 @@ public class Metric {
         this.progress = progress;
     }
 
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
     private int progress;
 
     public int getProgress() {

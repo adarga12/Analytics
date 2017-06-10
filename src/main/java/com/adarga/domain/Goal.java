@@ -6,6 +6,18 @@ package com.adarga.domain;
  * Created by cbolton on 6/9/17.
  */
 public class Goal {
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     private int goal;
     private String title;
     private String description;
