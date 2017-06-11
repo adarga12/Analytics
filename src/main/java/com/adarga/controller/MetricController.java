@@ -2,6 +2,7 @@ package com.adarga.controller;
 
 import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
+import com.adarga.service.MetricsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,8 @@ public class MetricController {
     @RequestMapping(method= RequestMethod.GET)
     public ArrayList<Metric> getMetrics() {
         metricsStub.add(new Metric(new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise"), 7));
-        return metricsStub;
+//        return metricsStub;
+        return MetricsService.getAllMetrics();
     }
 
     @RequestMapping(method= RequestMethod.PUT)

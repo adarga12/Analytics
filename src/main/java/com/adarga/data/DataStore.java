@@ -11,14 +11,14 @@ import java.util.ArrayList;
  */
 public class DataStore {
     private ArrayList<Metric> metrics;
-    private DataStore dataStore;
+    private static DataStore dataStore;
 
     private DataStore(){
         metrics = new ArrayList<Metric>();
         initializeMetrics();
     }
 
-    public DataStore getInstance() {
+    public static DataStore getInstance() {
         if (dataStore == null) {
             dataStore = new DataStore();
         }
@@ -27,5 +27,13 @@ public class DataStore {
 
     private void initializeMetrics() {
         metrics.add(new Metric(new Goal(20), 5));
+        Goal g = new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise");
+        metrics.add(new Metric(g, 7));
+        metrics.add(new Metric(g, 8));
+        metrics.add(new Metric(g, 2));
+    }
+
+    public ArrayList<Metric>getAllMetrics() {
+        return metrics;
     }
 }
