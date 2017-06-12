@@ -7,6 +7,8 @@ public class Metric {
 
     private Goal goal;
 
+    public Metric() {}
+
     public Metric (Goal goal, int progress) {
         this.goal = goal;
         this.progress = progress;

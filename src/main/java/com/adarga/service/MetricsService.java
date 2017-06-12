@@ -10,7 +10,23 @@ import java.util.ArrayList;
  */
 public class MetricsService {
 
-    public static ArrayList<Metric> getAllMetrics() {
+    public MetricsService() {}
+    public class Summary {
+
+        public Summary() {}
+    };
+
+    public ArrayList<Metric> getAllMetrics() {
         return DataStore.getInstance().getAllMetrics();
     }
+    public Summary getSummary(ArrayList<Metric> metrics) {
+        return new Summary();
+    }
+
+    public void addMetric(Metric m) {
+        DataStore.getInstance().addMetric(m);
+    }
+
+
+
 }

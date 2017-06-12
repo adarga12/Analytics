@@ -36,4 +36,8 @@ public class DataStore {
     public ArrayList<Metric>getAllMetrics() {
         return metrics;
     }
+
+    public void addMetric(Metric m) {
+        metrics.add(m);
+    }
 }

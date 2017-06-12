@@ -22,6 +22,8 @@ public class Goal {
     private String title;
     private String description;
 
+    public Goal() {}
+
     public Goal(int goal) {
         this.goal = goal;
     }
