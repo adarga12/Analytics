@@ -2,6 +2,7 @@ package com.adarga.data;
 
 import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
  * A Singleton collection of Metrics that can be streamed for analysis
  * Created by cbolton on 6/9/17.
  */
+@Repository
 public class DataStore {
     private ArrayList<Metric> metrics;
     private static DataStore dataStore;
