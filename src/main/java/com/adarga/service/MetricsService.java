@@ -2,6 +2,7 @@ package com.adarga.service;
 
 import com.adarga.data.DataStore;
 import com.adarga.domain.Metric;
+import com.adarga.domain.Tracker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,11 @@ public class MetricsService {
     }
 
     public void addMetric(Metric m) {
-        dataStore.addMetric(m);
+        dataStore.getTracker().addMetric(m);
+    }
+
+    public Tracker getTracker() {
+        return dataStore.getTracker();
     }
 
 

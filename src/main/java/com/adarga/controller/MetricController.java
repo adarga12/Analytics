@@ -2,6 +2,7 @@ package com.adarga.controller;
 
 import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
+import com.adarga.domain.Tracker;
 import com.adarga.service.MetricsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 @RequestMapping("/Metrics")
 public class MetricController {
 
-    private ArrayList<Metric> metricsStub = new ArrayList<Metric>();
     @Autowired
     private MetricsService service;
     @RequestMapping("/")
@@ -35,10 +35,8 @@ public class MetricController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ArrayList<Metric> getMetrics() {
-        metricsStub.add(new Metric(new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise"), 7));
-//        return metricsStub;
-        return service.getAllMetrics();
+    public Tracker getMetrics() {
+        return service.getTracker();
     }
 
     @RequestMapping(method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)

@@ -18,23 +18,23 @@ public class Goal {
         this.description = description;
     }
 
-    private int goal;
+    private float goal;
     private String title;
     private String description;
 
     public Goal() {}
 
-    public Goal(int goal) {
+    public Goal(float goal) {
         this.goal = goal;
     }
 
-    public Goal(int goal, String title, String description) {
+    public Goal(float goal, String title, String description) {
         this.goal = goal;
         this.title = title;
         this.description = description;
     }
 
-    public int getGoal() {
+    public float getGoal() {
         return goal;
     }
 

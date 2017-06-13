@@ -7,19 +7,13 @@ import org.joda.time.DateTime;
  */
 public class Metric {
 
-    private Goal goal;
     private DateTime timestamp;
 
     public Metric() {}
 
-    public Metric (Goal goal, float progress) {
-        this.goal = goal;
+    public Metric (float progress) {
         this.progress = progress;
         timestamp = DateTime.now();
-    }
-
-    public void setGoal(Goal goal) {
-        this.goal = goal;
     }
 
     public void setProgress(int progress) {
@@ -32,9 +26,8 @@ public class Metric {
         return progress;
     }
 
-    public Goal getGoal() {
-        return goal;
+    public DateTime getTimestamp() {
+        return timestamp;
     }
-
 
 }
