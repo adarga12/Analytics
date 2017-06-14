@@ -1,53 +1,24 @@
 package com.adarga.data;
 
-import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
 import com.adarga.domain.Tracker;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
 /**
- * A Singleton collection of Metrics that can be streamed for analysis
- * Created by cbolton on 6/9/17.
+ * Created by Chris on 6/14/2017.
  */
-@Repository
-public class DataStore {
-    private ArrayList<Metric> metrics;
-    private static DataStore dataStore;
-    private Tracker tracker;
-
-    private DataStore(){
-        metrics = new ArrayList<Metric>();
-        initializeMetrics();
-    }
-
-    public static DataStore getInstance() {
-        if (dataStore == null) {
-            dataStore = new DataStore();
+public interface DataStore {
+    static DataStore getInstance() {
+        if (InMemoryDataStore.dataStore == null) {
+            InMemoryDataStore.dataStore = new DataStore();
         }
-        return dataStore;
+        return InMemoryDataStore.dataStore;
     }
 
-    private void initializeMetrics() {
-        metrics.add(new Metric(5.2f));
-        Goal g = new Goal(10, "Cardio", "Minutes spent on cardiovascular exercise");
-        metrics.add(new Metric(7.6f));
-        metrics.add(new Metric(8.1f));
-        metrics.add(new Metric(2.98f));
-        tracker = new Tracker(g, metrics);
-    }
+    ArrayList<Metric> getAllMetrics();
 
-    public ArrayList<Metric>getAllMetrics() {
-        return metrics;
-    }
+    void addMetric(Metric m);
 
-    public void addMetric(Metric m) {
-        metrics.add(m);
-    }
-
-    public Tracker getTracker() {
-
-        return tracker;
-    }
+    Tracker getTracker();
 }
