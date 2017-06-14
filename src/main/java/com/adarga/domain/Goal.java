@@ -1,7 +1,7 @@
 package com.adarga.domain;
 
 /**
- * A (daily) goal the user is trying to achieve.  Examples include miles to run, minutes to spend studying, or calories
+ * A goal the user is trying to achieve.  Examples include miles to run, minutes to spend studying, or calories
  * to stay under.
  * Created by cbolton on 6/9/17.
  */

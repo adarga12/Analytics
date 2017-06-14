@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 /**
+ * Implementation of the service layer of the Analytics application
  * Created by cbolton on 6/11/17.
  */
 @Service
@@ -17,18 +18,12 @@ public class MetricsService {
     @Autowired
     private DataStore dataStore;
     public MetricsService() {}
-    public class Summary {
-
-        public Summary() {}
-    };
 
     public ArrayList<Metric> getAllMetrics() {
         return dataStore.getAllMetrics();
     }
-    public Summary getSummary(ArrayList<Metric> metrics) {
-        return new Summary();
-    }
 
+    //TODO: Need to update this to work with the Tracker object; we can't add new Trackers/Goals and new Metrics don't have timestamps.
     public void addMetric(Metric m) {
         dataStore.getTracker().addMetric(m);
     }
@@ -37,6 +32,6 @@ public class MetricsService {
         return dataStore.getTracker();
     }
 
-
+    //TODO: Implement averaging features
 
 }
