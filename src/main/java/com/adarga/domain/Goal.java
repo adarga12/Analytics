@@ -6,7 +6,10 @@ package com.adarga.domain;
  * Created by cbolton on 6/9/17.
  */
 public class Goal {
-    public void setGoal(int goal) {
+
+    private int goalId;
+
+    public void setGoal(float goal) {
         this.goal = goal;
     }
 
@@ -22,16 +25,24 @@ public class Goal {
     private String title;
     private String description;
 
-    public Goal() {}
+    public Goal(int goalId) {
+        this.goalId = goalId;
+    }
 
-    public Goal(float goal) {
+    public Goal(int goalId, float goal) {
+        this.goalId = goalId;
         this.goal = goal;
     }
 
-    public Goal(float goal, String title, String description) {
+    public Goal(int goalId, float goal, String title, String description) {
+        this.goalId = goalId;
         this.goal = goal;
         this.title = title;
         this.description = description;
+    }
+
+    public int getId() {
+        return goalId;
     }
 
     public float getGoal() {

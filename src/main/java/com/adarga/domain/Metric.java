@@ -8,12 +8,16 @@ import org.joda.time.DateTime;
  */
 public class Metric {
 
+    private int goalId;
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp;
 
-    public Metric() {}
 
-    public Metric (float progress) {
+    public Metric(int goalId) {
+        this.goalId = goalId;
+    }
+
+    public Metric (int goalId, float progress) {
         this.progress = progress;
         timestamp = DateTime.now();
     }
