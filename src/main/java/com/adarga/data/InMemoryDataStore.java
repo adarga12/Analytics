@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 /**
- * A Singleton collection of Metrics that can be streamed for analysis
+ * A Singleton in memory collection of Goals and Metrics, encapsulated by a Tracker.
  * Created by cbolton on 6/9/17.
  */
 @Repository
@@ -20,6 +20,13 @@ public class InMemoryDataStore implements DataStore {
     private InMemoryDataStore(){
         metrics = new ArrayList<Metric>();
         initializeMetrics();
+    }
+
+    public static DataStore getInstance() {
+        if (InMemoryDataStore.dataStore == null) {
+            InMemoryDataStore.dataStore = new InMemoryDataStore();
+        }
+        return InMemoryDataStore.dataStore;
     }
 
     private void initializeMetrics() {

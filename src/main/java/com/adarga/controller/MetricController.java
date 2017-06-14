@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -30,8 +31,8 @@ public class MetricController {
     }
 
     @RequestMapping("/PUT")
-    public void addMetric() {
-        // Add a metric to our collection
+    public void updateMetric(Metric m) throws NotImplementedException {
+        //TODO: Update a metric in our collection
     }
 
     @RequestMapping(method= RequestMethod.GET)
@@ -44,8 +45,5 @@ public class MetricController {
         service.addMetric(m);
     }
 
-    //GET
-    //PUT
-    //DELETE
-    //UPDATE
+    //TODO: Implement a delete method for deleting metrics
 }
