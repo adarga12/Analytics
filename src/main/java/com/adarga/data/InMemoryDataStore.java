@@ -33,7 +33,7 @@ public class InMemoryDataStore implements DataStore {
 
     private void initializeMetrics() {
         metrics.add(new Metric(0, 5.2f));
-        Goal goal = new Goal(0, 10, "Cardio", "Minutes spent on cardiovascular exercise");
+        Goal goal = new Goal(0, 10.0f, "Cardio", "Minutes spent on cardiovascular exercise");
         metrics.add(new Metric(0, 7.6f));
         metrics.add(new Metric(0, 8.1f));
         metrics.add(new Metric(0, 2.98f));
@@ -63,5 +63,10 @@ public class InMemoryDataStore implements DataStore {
         return optional.orElse(null);
     }
 
+    @Override
+    public void addGoal(Goal g) {
+        Tracker tracker = new Tracker(g);
+        trackers.add(tracker);
+    }
 
 }

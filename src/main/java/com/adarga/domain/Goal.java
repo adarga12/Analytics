@@ -1,5 +1,8 @@
 package com.adarga.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * A goal the user is trying to achieve.  Examples include miles to run, minutes to spend studying, or calories
  * to stay under.
@@ -7,7 +10,7 @@ package com.adarga.domain;
  */
 public class Goal {
 
-    private int goalId;
+    private final int goalId;
 
     public void setGoal(float goal) {
         this.goal = goal;
@@ -34,7 +37,9 @@ public class Goal {
         this.goal = goal;
     }
 
-    public Goal(int goalId, float goal, String title, String description) {
+    @JsonCreator
+    public Goal(@JsonProperty("goalId") int goalId, @JsonProperty("goal") float goal,
+                @JsonProperty("title") String title, @JsonProperty("description") String description) {
         this.goalId = goalId;
         this.goal = goal;
         this.title = title;

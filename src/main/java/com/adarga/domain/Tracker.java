@@ -13,6 +13,7 @@ public class Tracker {
 
     public Tracker(Goal goal) {
         this.goal = goal;
+        metrics = new ArrayList<Metric>();
     }
 
     public Tracker(Goal goal, ArrayList<Metric> metrics) {
