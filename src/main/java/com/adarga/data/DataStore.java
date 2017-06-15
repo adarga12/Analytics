@@ -1,11 +1,13 @@
 package com.adarga.data;
 
+import com.adarga.domain.Goal;
 import com.adarga.domain.Metric;
 import com.adarga.domain.Tracker;
 
 import java.util.ArrayList;
 
 /**
+ * Data access interface.
  * Created by Chris on 6/14/2017.
  */
 public interface DataStore {
@@ -19,5 +21,9 @@ public interface DataStore {
 
     void addMetric(Metric m);
 
-    Tracker getTracker();
+    ArrayList<Tracker>  getTrackers();
+
+    Tracker getTracker(int goalId);
+
+    void addGoal(Goal g);
 }

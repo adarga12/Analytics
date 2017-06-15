@@ -1,5 +1,7 @@
 package com.adarga.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.joda.time.DateTime;
 
 /**
@@ -8,24 +10,28 @@ import org.joda.time.DateTime;
  */
 public class Metric {
 
+    private int goalId;
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp;
+    private float progress;
 
-    public Metric() {}
-
-    public Metric (float progress) {
+    @JsonCreator
+    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress) {
+        this.goalId = goalId;
         this.progress = progress;
         timestamp = DateTime.now();
     }
 
-    public void setProgress(int progress) {
-        this.progress = progress;
+    public int getGoalId() {
+        return goalId;
     }
-
-    private float progress;
 
     public float getProgress() {
         return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     public DateTime getTimestamp() {
