@@ -60,7 +60,7 @@ public class InMemoryDataStore implements DataStore {
     @Override
     public Tracker getTracker(int goalId) {
         Optional<Tracker> optional = trackers.stream().filter(t -> t.getGoal().getId() == goalId).findFirst();
-        return optional.isPresent() ? optional.get() : null;
+        return optional.orElse(null);
     }
 
 
