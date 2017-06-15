@@ -28,6 +28,10 @@ public class Metric {
 
     private float progress;
 
+    public int getGoalId() {
+        return goalId;
+    }
+
     public float getProgress() {
         return progress;
     }

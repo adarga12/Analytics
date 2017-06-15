@@ -6,6 +6,7 @@ import com.adarga.domain.Tracker;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * A Singleton in memory collection of Goals and Metrics, encapsulated by a Tracker.
@@ -16,6 +17,7 @@ public class InMemoryDataStore implements DataStore {
     private ArrayList<Metric> metrics;
     private static DataStore dataStore;
     private Tracker tracker;
+    private ArrayList<Tracker> trackers;
 
     private InMemoryDataStore(){
         metrics = new ArrayList<Metric>();
@@ -36,6 +38,8 @@ public class InMemoryDataStore implements DataStore {
         metrics.add(new Metric(0, 8.1f));
         metrics.add(new Metric(0, 2.98f));
         tracker = new Tracker(goal, metrics);
+        trackers = new ArrayList<Tracker>();
+        trackers.add(tracker);
     }
 
     @Override
@@ -49,7 +53,15 @@ public class InMemoryDataStore implements DataStore {
     }
 
     @Override
-    public Tracker getTracker() {
-        return tracker;
+    public ArrayList<Tracker> getTrackers() {
+        return trackers;
     }
+
+    @Override
+    public Tracker getTracker(int goalId) {
+        Optional<Tracker> optional = trackers.stream().filter(t -> t.getGoal().getId() == goalId).findFirst();
+        return optional.isPresent() ? optional.get() : null;
+    }
+
+
 }

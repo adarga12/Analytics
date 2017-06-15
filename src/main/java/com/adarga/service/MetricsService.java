@@ -25,11 +25,11 @@ public class MetricsService {
 
     //TODO: Need to update this to work with the Tracker object; we can't add new Trackers/Goals and new Metrics don't have timestamps.
     public void addMetric(Metric m) {
-        dataStore.getTracker().addMetric(m);
+        dataStore.getTracker(m.getGoalId()).addMetric(m);
     }
 
-    public Tracker getTracker() {
-        return dataStore.getTracker();
+    public ArrayList<Tracker> getTrackers() {
+        return dataStore.getTrackers();
     }
 
     //TODO: Implement averaging features

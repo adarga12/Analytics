@@ -19,5 +19,7 @@ public interface DataStore {
 
     void addMetric(Metric m);
 
-    Tracker getTracker();
+    ArrayList<Tracker>  getTrackers();
+
+    Tracker getTracker(int goalId);
 }
