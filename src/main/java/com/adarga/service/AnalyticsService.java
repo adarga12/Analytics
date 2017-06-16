@@ -50,9 +50,9 @@ public class AnalyticsService {
         return dataStore.getTrackers();
     }
 
-    public float getAverageSuccessRate(Goal goal, int timespan) {
+    public float getAverageSuccessRate(int goalId, int timespan) {
         DateTime now = DateTime.now();
-        Tracker tracker = dataStore.getTracker(goal.getId());
+        Tracker tracker = dataStore.getTracker(goalId);
         ArrayList<Metric> metrics = tracker.getMetrics();
         switch (timespan) {
             case DAY:
