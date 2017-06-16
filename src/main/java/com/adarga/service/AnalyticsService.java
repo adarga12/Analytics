@@ -26,11 +26,11 @@ public class AnalyticsService {
     @Autowired
     private DataStore dataStore;
 
-    public static final int DAY = 0;
-    public static final int WEEK = 1;
-    public static final int MONTH = 2;
-    public static final int YEAR = 3;
-    public static final int ALL_TIME = 4;
+    private static final int DAY = 0;
+    private static final int WEEK = 1;
+    private static final int MONTH = 2;
+    private static final int YEAR = 3;
+    private static final int ALL_TIME = 4;
 
     public AnalyticsService() {}
 
@@ -50,29 +50,21 @@ public class AnalyticsService {
         return dataStore.getTrackers();
     }
 
-    //TODO: Implement averaging features
     public float getAverageSuccessRate(Goal goal, int timespan) {
         DateTime now = DateTime.now();
-        // TODO: Retrieve tracker
-        ArrayList<Metric> metrics = new ArrayList<Metric>();
-        float average = 0;
+        Tracker tracker = dataStore.getTracker(goal.getId());
+        ArrayList<Metric> metrics = tracker.getMetrics();
         switch (timespan) {
             case DAY:
-                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
-                break;
+                return getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
             case WEEK:
-                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(7)));
-                break;
+                return getAverage(metrics, DateTime.now().minus(Duration.standardDays(7)));
             case MONTH:
-//                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
-                break;
+                return getAverage(metrics, DateTime.now().minus(Duration.standardDays(30)));
             case YEAR:
-//                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
-                break;
+                return getAverage(metrics, DateTime.now().minus(Duration.standardDays(365)));
             case ALL_TIME:
-                average = getAverage(metrics, null);
-                break;
-            default:
+                return getAverage(metrics, null);
         }
         return 0.0f;
     }
