@@ -79,7 +79,7 @@ public class AnalyticsService {
 
     private float getAverage(ArrayList<Metric> metrics, DateTime timespan) {
         if (timespan == null) {
-//            return metrics.stream().filter(metric -> metric.getTimestamp().isAfter(timespan));
+            return (float)metrics.stream().collect(Collectors.summarizingDouble(Metric::getProgress)).getAverage();
         }
         DoubleSummaryStatistics qualified = metrics.stream()
                 .filter(metric -> metric.getTimestamp().isAfter(timespan))
