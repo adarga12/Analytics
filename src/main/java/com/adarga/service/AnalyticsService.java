@@ -12,6 +12,9 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.management.BadAttributeValueExpException;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of the service layer of the Analytics application
@@ -78,8 +81,10 @@ public class AnalyticsService {
         if (timespan == null) {
 //            return metrics.stream().filter(metric -> metric.getTimestamp().isAfter(timespan));
         }
-        metrics.stream().filter(metric -> metric.getTimestamp().isAfter(timespan));
-        return 0.0f;
+        DoubleSummaryStatistics qualified = metrics.stream()
+                .filter(metric -> metric.getTimestamp().isAfter(timespan))
+                .collect(Collectors.summarizingDouble(Metric::getProgress));
+        return (float)qualified.getAverage();
     }
 
 }
