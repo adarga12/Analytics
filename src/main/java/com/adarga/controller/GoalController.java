@@ -32,5 +32,8 @@ public class GoalController {
         service.addGoal(goal);
     }
 
-    //TODO: Implement a delete method for deleting goals
+    public void deleteGoal(@RequestBody Goal goal) {
+        //TODO: Implement a delete method for deleting goals
+        service.deleteGoal(goal);
+    }
 }

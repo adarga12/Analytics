@@ -8,7 +8,6 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.management.BadAttributeValueExpException;
 import java.util.ArrayList;
@@ -51,7 +50,6 @@ public class AnalyticsService {
     }
 
     public float getAverageSuccessRate(int goalId, int timespan) {
-        DateTime now = DateTime.now();
         Tracker tracker = dataStore.getTracker(goalId);
         ArrayList<Metric> metrics = tracker.getMetrics();
         switch (timespan) {
@@ -79,4 +77,7 @@ public class AnalyticsService {
         return (float)qualified.getAverage();
     }
 
+    public void deleteGoal(Goal goal) {
+        dataStore.getTrackers().remove(dataStore.getTracker(goal.getId()));
+    }
 }
