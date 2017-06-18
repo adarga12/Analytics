@@ -18,7 +18,8 @@ public class Metric {
     private float progress;
 
     @JsonCreator
-    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress) {
+    public Metric (@JsonProperty("id") int id, @JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress) {
+        this.id = id;
         this.goalId = goalId;
         this.progress = progress;
         timestamp = DateTime.now();
