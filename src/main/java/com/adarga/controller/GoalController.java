@@ -32,6 +32,7 @@ public class GoalController {
         service.addGoal(goal);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE)
     public void deleteGoal(@RequestBody Goal goal) {
         //TODO: Implement a delete method for deleting goals
         service.deleteGoal(goal);
