@@ -10,6 +10,8 @@ import org.joda.time.DateTime;
  */
 public class Metric {
 
+    //TODO: Require id in Metric constructors
+    private int id;
     private int goalId;
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp;
@@ -21,6 +23,8 @@ public class Metric {
         this.progress = progress;
         timestamp = DateTime.now();
     }
+
+    public int getId() { return id; }
 
     public int getGoalId() {
         return goalId;
