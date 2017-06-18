@@ -80,4 +80,8 @@ public class AnalyticsService {
     public void deleteGoal(Goal goal) {
         dataStore.getTrackers().remove(dataStore.getTracker(goal.getId()));
     }
+
+    public void deleteMetric(Metric metric) {
+        dataStore.getTracker(metric.getGoalId()).getMetrics().remove(metric);
+    }
 }

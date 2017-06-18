@@ -44,5 +44,6 @@ public class MetricController {
         service.addMetric(m);
     }
 
-    //TODO: Implement a delete method for deleting metrics
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteMetric(@RequestBody Metric metric) { service.deleteMetric(metric);}
 }
