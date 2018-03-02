@@ -8,12 +8,16 @@ import org.joda.time.DateTime;
  * Represents an entry describing progress towards a Goal.
  * Created by cbolton on 6/9/17.
  */
+//TODO: Should Metric be abstrtact?  Should we extract an interface?
 public class Metric {
 
     private int goalId;
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp;
     private float progress;
+
+    //Default constructor for subclassing
+    public Metric() {}
 
     @JsonCreator
     public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress) {
