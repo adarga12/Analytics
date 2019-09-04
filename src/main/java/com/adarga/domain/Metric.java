@@ -10,16 +10,20 @@ import org.joda.time.DateTime;
  */
 public class Metric {
 
+    private static long nextId = 0;
+
+    private long id;
     private int goalId;
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp;
     private float progress;
 
     @JsonCreator
-    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress) {
+    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress, @JsonProperty("timestamp") DateTime timestamp) {
+        this.id = Metric.getNextId();
         this.goalId = goalId;
         this.progress = progress;
-        timestamp = DateTime.now();
+        this.timestamp = timestamp == null ?  DateTime.now() : timestamp;
     }
 
     public int getGoalId() {
@@ -38,4 +42,11 @@ public class Metric {
         return timestamp;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public static long getNextId() {
+        return Metric.nextId++;
+    }
 }
