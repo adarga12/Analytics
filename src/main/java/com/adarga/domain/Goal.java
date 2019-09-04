@@ -24,9 +24,11 @@ public class Goal {
         this.description = description;
     }
 
-    private float goal;
-    private String title;
-    private String description;
+    private float goal;  //The value we're trying to achieve
+    private String title; //Short name for this goal
+    private String description; //A more verbose definition of the goal
+
+    //TODO: The unitOfMeasure from Record should probably live here instead of record.
 
     public Goal(int goalId) {
         this.goalId = goalId;

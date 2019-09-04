@@ -8,36 +8,36 @@ import java.util.ArrayList;
  */
 public class Tracker {
 
-    private Goal goal;
-    private ArrayList<Metric> metrics;
+    private Goal goal;  //The goal we're tracking
+    private ArrayList<Record> records;  //The progress records toward the goal
 
     public Tracker(Goal goal) {
         this.goal = goal;
-        metrics = new ArrayList<Metric>();
+        records = new ArrayList<>();
     }
 
-    public Tracker(Goal goal, ArrayList<Metric> metrics) {
+    public Tracker(Goal goal, ArrayList<Record> records) {
         this.goal = goal;
-        this.metrics = metrics;
+        this.records = records;
     }
 
     public Goal getGoal() {
         return goal;
     }
 
-    public ArrayList<Metric> getMetrics() {
-        return metrics;
+    public ArrayList<Record> getRecords() {
+        return records;
     }
 
     public void setGoal(Goal goal) {
         this.goal = goal;
     }
 
-    public void setMetrics(ArrayList<Metric> metrics) {
-        this.metrics = metrics;
+    public void setRecords(ArrayList<Record> records) {
+        this.records = records;
     }
 
-    public void addMetric(Metric m) {
-        metrics.add(m);
+    public void addRecord(Record record) {
+        records.add(record);
     }
 }

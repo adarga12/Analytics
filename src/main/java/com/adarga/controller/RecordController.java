@@ -1,6 +1,6 @@
 package com.adarga.controller;
 
-import com.adarga.domain.Metric;
+import com.adarga.domain.Record;
 import com.adarga.domain.Tracker;
 import com.adarga.service.AnalyticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,35 +14,36 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
 
 /**
- * Controller for collection of Metrics
+ * Controller for collection of Records
  * Created by cbolton on 6/9/17.
  */
 
 @RestController
-@RequestMapping("/Metrics")
-public class MetricController {
+@RequestMapping("/Records")
+public class RecordController {
 
     @Autowired
     private AnalyticsService service;
+
     @RequestMapping("/")
     public String index() {
         return "<html><title>Hello World</title><body><P><B>Hey there you!</B></P></body></html>";
     }
 
     @RequestMapping("/PUT")
-    public void updateMetric(Metric m) throws NotImplementedException {
-        //TODO: Update a metric in our collection
+    public void updateRecord(Record record) throws NotImplementedException {
+        //TODO: Update a record in our collection
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ArrayList<Tracker> getMetrics() {
+    public ArrayList<Tracker> getRecords() {
         return service.getTrackers();
     }
 
     @RequestMapping(method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-    public void addMetric(@RequestBody Metric m) {
-        service.addMetric(m);
+    public void addRecord(@RequestBody Record record) {
+        service.addRecord(record);
     }
 
-    //TODO: Implement a delete method for deleting metrics
+    //TODO: Implement a delete method for deleting records
 }

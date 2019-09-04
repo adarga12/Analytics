@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
  * Represents an entry describing progress towards a Goal.
  * Created by cbolton on 6/9/17.
  */
-public class Metric {
+public class Record {
 
     private static long nextId = 0;
 
@@ -17,11 +17,13 @@ public class Metric {
     //TODO: Consider a lighterweight alternative to DateTime.
     private DateTime timestamp; //time of our record
     private float progress; //Progress made toward goal
+
+    //TODO: This should probably be refactored to be a member of Goal instead of Record
     private String unitOfMeasure; //The unit of progress in time/distance/weight etc (ie, minutes, hours, miles, pounds)
 
     @JsonCreator
-    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress, String unitOfMeasure, @JsonProperty("timestamp") DateTime timestamp) {
-        this.id = Metric.getNextId();
+    public Record(@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress, String unitOfMeasure, @JsonProperty("timestamp") DateTime timestamp) {
+        this.id = Record.getNextId();
         this.goalId = goalId;
         this.progress = progress;
         this.unitOfMeasure = unitOfMeasure;
@@ -57,6 +59,6 @@ public class Metric {
     }
 
     public static long getNextId() {
-        return Metric.nextId++;
+        return Record.nextId++;
     }
 }
