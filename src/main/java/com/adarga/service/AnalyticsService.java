@@ -2,15 +2,13 @@ package com.adarga.service;
 
 import com.adarga.data.DataStore;
 import com.adarga.domain.Goal;
-import com.adarga.domain.Metric;
+import com.adarga.domain.Record;
 import com.adarga.domain.Tracker;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import javax.management.BadAttributeValueExpException;
 import java.util.ArrayList;
 
 /**
@@ -31,12 +29,12 @@ public class AnalyticsService {
 
     public AnalyticsService() {}
 
-    public ArrayList<Metric> getAllMetrics() {
-        return dataStore.getAllMetrics();
+    public ArrayList<Record> getAllRecords() {
+        return dataStore.getAllRecords();
     }
 
-    public void addMetric(Metric m) {
-        dataStore.getTracker(m.getGoalId()).addMetric(m);
+    public void addRecord(Record m) {
+        dataStore.getTracker(m.getGoalId()).addRecord(m);
     }
 
     public void addGoal(Goal g) {
@@ -51,34 +49,34 @@ public class AnalyticsService {
     public float getAverageSuccessRate(Goal goal, int timespan) {
         DateTime now = DateTime.now();
         // TODO: Retrieve tracker
-        ArrayList<Metric> metrics = new ArrayList<Metric>();
+        ArrayList<Record> records = new ArrayList<>();
         float average = 0;
         switch (timespan) {
             case DAY:
-                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
+                average = getAverage(records, DateTime.now().minus(Duration.standardDays(1)));
                 break;
             case WEEK:
-                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(7)));
+                average = getAverage(records, DateTime.now().minus(Duration.standardDays(7)));
                 break;
             case MONTH:
-//                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
+//                average = getAverage(records, DateTime.now().minus(Duration.standardDays(1)));
                 break;
             case YEAR:
-//                average = getAverage(metrics, DateTime.now().minus(Duration.standardDays(1)));
+//                average = getAverage(records, DateTime.now().minus(Duration.standardDays(1)));
                 break;
             case ALL_TIME:
-                average = getAverage(metrics, null);
+                average = getAverage(records, null);
                 break;
             default:
         }
         return 0.0f;
     }
 
-    private float getAverage(ArrayList<Metric> metrics, DateTime timespan) {
+    private float getAverage(ArrayList<Record> records, DateTime timespan) {
         if (timespan == null) {
-//            return metrics.stream().filter(metric -> metric.getTimestamp().isAfter(timespan));
+//            return records.stream().filter(record -> record.getTimestamp().isAfter(timespan));
         }
-        metrics.stream().filter(metric -> metric.getTimestamp().isAfter(timespan));
+        records.stream().filter(record -> record.getTimestamp().isAfter(timespan));
         return 0.0f;
     }
 

@@ -1,7 +1,7 @@
 package com.adarga.data;
 
 import com.adarga.domain.Goal;
-import com.adarga.domain.Metric;
+import com.adarga.domain.Record;
 import com.adarga.domain.Tracker;
 
 import java.util.ArrayList;
@@ -15,15 +15,15 @@ public interface DataStore {
     //TODO: Consider a better solution than this default no-op method body.
     static DataStore getInstance() {
         return null;
-    };
+    }
 
-    ArrayList<Metric> getAllMetrics();
+    ArrayList<Record> getAllRecords();
 
-    void addMetric(Metric m);
+    void addRecord(Record record);
 
     ArrayList<Tracker>  getTrackers();
 
     Tracker getTracker(int goalId);
 
-    void addGoal(Goal g);
+    void addGoal(Goal goal);
 }

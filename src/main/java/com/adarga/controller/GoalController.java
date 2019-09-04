@@ -28,7 +28,7 @@ public class GoalController {
     }
 
     @RequestMapping(method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
-    public void addMetric(@RequestBody Goal goal) {
+    public void addGoal(@RequestBody Goal goal) {
         service.addGoal(goal);
     }
 
