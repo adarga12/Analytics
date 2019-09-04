@@ -13,16 +13,18 @@ public class Metric {
     private static long nextId = 0;
 
     private long id;
-    private int goalId;
+    private int goalId; //ID of the goal we're logging progress toward
     //TODO: Consider a lighterweight alternative to DateTime.
-    private DateTime timestamp;
-    private float progress;
+    private DateTime timestamp; //time of our record
+    private float progress; //Progress made toward goal
+    private String unitOfMeasure; //The unit of progress in time/distance/weight etc (ie, minutes, hours, miles, pounds)
 
     @JsonCreator
-    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress, @JsonProperty("timestamp") DateTime timestamp) {
+    public Metric (@JsonProperty("goalId") int goalId, @JsonProperty("progress") float progress, String unitOfMeasure, @JsonProperty("timestamp") DateTime timestamp) {
         this.id = Metric.getNextId();
         this.goalId = goalId;
         this.progress = progress;
+        this.unitOfMeasure = unitOfMeasure;
         this.timestamp = timestamp == null ?  DateTime.now() : timestamp;
     }
 
@@ -36,6 +38,14 @@ public class Metric {
 
     public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    public String getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public void setUnitOfMeasure (String unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 
     public DateTime getTimestamp() {

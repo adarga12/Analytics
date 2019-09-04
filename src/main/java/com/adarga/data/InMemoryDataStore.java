@@ -33,12 +33,12 @@ public class InMemoryDataStore implements DataStore {
     }
 
     private void initializeMetrics() {
-        metrics.add(new Metric(0, 5.2f, new DateTime(2019,6,13,11,33)));
         Goal goal = new Goal(0, 10.0f, "Cardio", "Minutes spent on cardiovascular exercise");
-        metrics.add(new Metric(0, 7.6f,  new DateTime(2019,7,4,10,45)));
-        metrics.add(new Metric(0, 8.1f,  new DateTime(2019,7,19,13,12)));
-        metrics.add(new Metric(0, 2.98f,  new DateTime(2019,8,5,15,26)));
-        metrics.add(new Metric(0, 3.1f,  new DateTime(2019,9,2,9,8)));
+        metrics.add(new Metric(0, 5.2f, "minutes", new DateTime(2019,6,13,11,33)));
+        metrics.add(new Metric(0, 7.6f, "minutes", new DateTime(2019,7,4,10,45)));
+        metrics.add(new Metric(0, 8.1f, "minutes", new DateTime(2019,7,19,13,12)));
+        metrics.add(new Metric(0, 2.98f, "minutes", new DateTime(2019,8,5,15,26)));
+        metrics.add(new Metric(0, 3.1f, "minutes", new DateTime(2019,9,2,9,8)));
         tracker = new Tracker(goal, metrics);
         trackers = new ArrayList<>();
         trackers.add(tracker);
