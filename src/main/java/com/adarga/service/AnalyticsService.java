@@ -21,11 +21,11 @@ public class AnalyticsService {
     @Autowired
     private DataStore dataStore;
 
-    public static final int DAY = 0;
-    public static final int WEEK = 1;
-    public static final int MONTH = 2;
-    public static final int YEAR = 3;
-    public static final int ALL_TIME = 4;
+    private static final int DAY = 0;
+    private static final int WEEK = 1;
+    private static final int MONTH = 2;
+    private static final int YEAR = 3;
+    private static final int ALL_TIME = 4;
 
     public AnalyticsService() {}
 
@@ -72,6 +72,7 @@ public class AnalyticsService {
         return 0.0f;
     }
 
+    //TODO: We're already using a const called timespan in getAverageSuccessRate; find a better (different) name for this.
     private float getAverage(ArrayList<Record> records, DateTime timespan) {
         if (timespan == null) {
 //            return records.stream().filter(record -> record.getTimestamp().isAfter(timespan));
