@@ -59,10 +59,10 @@ public class AnalyticsService {
                 average = getAverage(records, DateTime.now().minus(Duration.standardDays(7)));
                 break;
             case MONTH:
-//                average = getAverage(records, DateTime.now().minus(Duration.standardDays(1)));
+                average = getAverage(records, DateTime.now().minus(Duration.standardDays(30)));
                 break;
             case YEAR:
-//                average = getAverage(records, DateTime.now().minus(Duration.standardDays(1)));
+                average = getAverage(records, DateTime.now().minus(Duration.standardDays(365)));
                 break;
             case ALL_TIME:
                 average = getAverage(records, null);
