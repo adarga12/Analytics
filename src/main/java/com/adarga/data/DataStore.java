@@ -28,4 +28,6 @@ public interface DataStore {
     void addGoal(Goal goal);
 
     void deleteGoal(Goal goal);
+
+    void updateGoal(Goal goal);
 }

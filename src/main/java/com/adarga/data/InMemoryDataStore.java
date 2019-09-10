@@ -82,8 +82,14 @@ public class InMemoryDataStore implements DataStore {
         trackers.add(tracker);
     }
 
+    @Override
     public void deleteGoal (Goal goal) {
         trackers.remove(findTrackerByGoal(goal.getId()));
+    }
+
+    @Override
+    public void updateGoal (Goal goal) {
+        findTrackerByGoal(goal.getId()).setGoal(goal);
     }
 
     private Tracker findTrackerByGoal(int goalId) {

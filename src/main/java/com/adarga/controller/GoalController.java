@@ -22,9 +22,9 @@ public class GoalController {
     @Autowired
     private AnalyticsService service;
 
-    @RequestMapping("/PUT")
-    public void updateGoal(Goal goal) throws NotImplementedException {
-        //TODO: Update a goal in our collection
+    @RequestMapping(method= RequestMethod.PUT, consumes= MediaType.APPLICATION_JSON_VALUE)
+    public void updateGoal(@RequestBody Goal goal) throws NotImplementedException {
+        service.updateGoal(goal);
     }
 
     @RequestMapping(method= RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)

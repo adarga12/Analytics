@@ -45,6 +45,10 @@ public class AnalyticsService {
         dataStore.deleteGoal(g);
     }
 
+    public void updateGoal(Goal goal) {
+        dataStore.updateGoal(goal);
+    }
+
     public ArrayList<Tracker> getTrackers() {
         return dataStore.getTrackers();
     }
