@@ -26,4 +26,6 @@ public interface DataStore {
     Tracker getTracker(int goalId);
 
     void addGoal(Goal goal);
+
+    void deleteGoal(Goal goal);
 }

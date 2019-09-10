@@ -33,4 +33,9 @@ public class GoalController {
     }
 
     //TODO: Implement a delete method for deleting goals
+    @RequestMapping(method= RequestMethod.DELETE, consumes= MediaType.APPLICATION_JSON_VALUE)
+    public void deleteGoal(@RequestBody Goal goal) {
+        service.deleteGoal(goal);
+    }
+
 }
