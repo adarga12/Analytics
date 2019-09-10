@@ -33,12 +33,16 @@ public class AnalyticsService {
         return dataStore.getAllRecords();
     }
 
-    public void addRecord(Record m) {
-        dataStore.getTracker(m.getGoalId()).addRecord(m);
+    public void addRecord(Record record) {
+        dataStore.getTracker(record.getGoalId()).addRecord(record);
     }
 
-    public void addGoal(Goal g) {
-        dataStore.addGoal(g);
+    public void addGoal(Goal goal) {
+        dataStore.addGoal(goal);
+    }
+
+    public void deleteGoal(Goal g) {
+        dataStore.deleteGoal(g);
     }
 
     public ArrayList<Tracker> getTrackers() {
@@ -74,6 +78,8 @@ public class AnalyticsService {
 
     //TODO: We're already using a const called timespan in getAverageSuccessRate; find a better (different) name for this.
     private float getAverage(ArrayList<Record> records, DateTime timespan) {
+        DateTime now = DateTime.now();
+
         if (timespan == null) {
 //            return records.stream().filter(record -> record.getTimestamp().isAfter(timespan));
         }

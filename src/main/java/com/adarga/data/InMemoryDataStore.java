@@ -42,6 +42,17 @@ public class InMemoryDataStore implements DataStore {
         tracker = new Tracker(goal, records);
         trackers = new ArrayList<>();
         trackers.add(tracker);
+
+        goal = new Goal(1, 10.0f, "Weight Loss", "Pounds of weight lost per day");
+        records = new ArrayList<>();
+
+        records.add(new Record(1, 0.2f, "lbs", new DateTime(2019,8,6,8,12)));
+        records.add(new Record(1, 0.6f, "lbs", new DateTime(2019,8,10,8,5)));
+        records.add(new Record(1, 1.1f, "lbs", new DateTime(2019,8,17,8,0)));
+        records.add(new Record(1, 0.98f, "lbs", new DateTime(2019,9,5,8,17)));
+        records.add(new Record(1, 0.1f, "lbs", new DateTime(2019,9,9,9,3)));
+        trackers.add(new Tracker(goal, records));
+
     }
 
     @Override
@@ -50,8 +61,8 @@ public class InMemoryDataStore implements DataStore {
     }
 
     @Override
-    public void addRecord(Record m) {
-        records.add(m);
+    public void addRecord(Record record) {
+        findTrackerByGoal(record.getGoalId()).addRecord(record);
     }
 
     @Override
@@ -71,4 +82,16 @@ public class InMemoryDataStore implements DataStore {
         trackers.add(tracker);
     }
 
+    public void deleteGoal (Goal goal) {
+        trackers.remove(findTrackerByGoal(goal.getId()));
+    }
+
+    private Tracker findTrackerByGoal(int goalId) {
+        for (Tracker t : trackers) {
+            if (tracker.getGoal().getId() == goalId) {
+                return tracker;
+            }
+        }
+        return null;
+    }
 }
