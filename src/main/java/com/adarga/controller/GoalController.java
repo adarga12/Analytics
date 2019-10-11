@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
+
 /**
  * Controller for collection of Goals
  * Created by cbolton on 6/14/17.
@@ -22,6 +24,11 @@ public class GoalController {
     @Autowired
     private AnalyticsService service;
 
+    @RequestMapping(method= RequestMethod.GET)
+    public ArrayList<Goal> getGoals() {
+        return service.getGoals();
+    }
+
     @RequestMapping(method= RequestMethod.PUT, consumes= MediaType.APPLICATION_JSON_VALUE)
     public void updateGoal(@RequestBody Goal goal) throws NotImplementedException {
         service.updateGoal(goal);
@@ -32,7 +39,6 @@ public class GoalController {
         service.addGoal(goal);
     }
 
-    //TODO: Implement a delete method for deleting goals
     @RequestMapping(method= RequestMethod.DELETE, consumes= MediaType.APPLICATION_JSON_VALUE)
     public void deleteGoal(@RequestBody Goal goal) {
         service.deleteGoal(goal);

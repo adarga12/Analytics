@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
 /**
  * Controller for collection of Records
- * Created by cbolton on 6/9/17.
+ *
  */
 
 @RestController
@@ -25,14 +24,9 @@ public class RecordController {
     @Autowired
     private AnalyticsService service;
 
-    @RequestMapping("/")
-    public String index() {
-        return "<html><title>Hello World</title><body><P><B>Hey there you!</B></P></body></html>";
-    }
-
-    @RequestMapping("/PUT")
-    public void updateRecord(Record record) throws NotImplementedException {
-        //TODO: Update a record in our collection
+    @RequestMapping(method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateRecord(Record record) {
+        service.updateRecord(record);
     }
 
     @RequestMapping(method= RequestMethod.GET)
@@ -45,5 +39,7 @@ public class RecordController {
         service.addRecord(record);
     }
 
-    //TODO: Implement a delete method for deleting records
-}
+    @RequestMapping(method= RequestMethod.DELETE, consumes= MediaType.APPLICATION_JSON_VALUE)
+    public void deleteRecord(@RequestBody Record record) {
+        service.deleteRecord(record);
+    }}

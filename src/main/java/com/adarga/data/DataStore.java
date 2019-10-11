@@ -30,4 +30,8 @@ public interface DataStore {
     void deleteGoal(Goal goal);
 
     void updateGoal(Goal goal);
+
+    void updateRecord(Record record);
+
+    ArrayList<Goal> getGoals();
 }

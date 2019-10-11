@@ -8,12 +8,13 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
 /**
  * Implementation of the service layer of the Analytics application
- * Created by cbolton on 6/11/17.
+ *
  */
 @Service
 public class AnalyticsService {
@@ -32,6 +33,8 @@ public class AnalyticsService {
     public ArrayList<Record> getAllRecords() {
         return dataStore.getAllRecords();
     }
+
+    public ArrayList<Goal> getGoals() {return dataStore.getGoals(); }
 
     public void addRecord(Record record) {
         dataStore.getTracker(record.getGoalId()).addRecord(record);
@@ -89,6 +92,14 @@ public class AnalyticsService {
         }
         records.stream().filter(record -> record.getTimestamp().isAfter(timespan));
         return 0.0f;
+    }
+
+    public void updateRecord(Record record) {
+        dataStore.updateRecord(record);
+    }
+
+    public void deleteRecord(Record record) {
+        throw new NotImplementedException();
     }
 
 }
